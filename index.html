@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="en-US"><head><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="keywords" content="jsites.xyz">
+<meta name="description" content="towerblox game">
+<meta name="author" content="jsites.xyz">
+
+<link rel="icon" type="image/jpg" href="assets/block.jpg">
+<script src="js/fun.js" type="text/javascript"></script>
+
+<title>Towerblox</title>
+
+<link rel="preload" href="fonts/bungee_spice.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head><body>
+
+<nav>
+	<p>TOWER BLOX</p>
+	<p id="highscore-home"></p>
+	<button onclick="navBtn(this);">Play</button>
+	<button onclick="alert('leaderboard is currently disabled');">Leaderboard</button>
+	<button onclick="navBtn(this);">Help</button>
+	<button onclick="navBtn(this);">About</button>
+</nav>
+<div class="content"id="play">
+	<button id="game-actions-btn"onclick="runActionsContainer('game');"></button>
+	<div class="actions-container">
+		<div id="game-actions">
+			<p><label>Game Menu</label><p>
+			<button onclick="runActionsContainer('game')">CONTINUE</button>
+			<button onclick="initGame()">RESTART</button>
+			<button onclick="endGame()">END GAME</button>
+			<button onclick="backToNav()">MAIN MENU</button>
+		</div>
+		<div id="endgame-actions">
+			<p><label>Your score is:</label> <label>noscore</label></p>
+			<p><label>Enter your name:</label></p>
+			<input type='text'maxlength="20"placeholder="anon"/>
+			<button onclick="updateScoreName()">SUBMIT SCORE</button>
+			<button onclick="initGame()">PLAY AGAIN</button>
+			<button onclick="backToNav()">MAIN MENU</button>
+		</div>
+	</div>
+
+	<label id="score-lbl">score: &nbsp;&nbsp;
+		<label id="score">0</label>
+		<label id='lives'><life></life><life></life><life></life></label>
+	</label>
+	<div class="background-clouds"></div>
+	<div class="background-clouds"></div>
+	<div class="background-clouds"></div>
+	<div id="towline"></div>
+	<div id="hook"></div>
+	<div id="click-input"onclick="onTouch()"></div>
+</div>
+<div class="content"id="leaderboard">
+	<p><button class="back-btn"onclick="backToNav()"></button><label> Leaderboard</label></p>
+	<hr>
+	<div><p id="scoresres"></p><gradient></gradient></div>
+	<p id="leaderboard-anon"></p>
+</div>
+<div class="content"id="help">
+	<p><button class="back-btn"onclick="backToNav()"></button><label> Help</label></p>
+	<hr>
+	<div>Tap/click on the screen to release the block.<br>Refresh page if screen size changes after loading.</div>
+</div>
+<div class="content"id="about">
+	<p><button class="back-btn"onclick="backToNav()"></button><label> About</label></p>
+	<hr>
+	<div>Created By J!</div>
+	<hr>
+	<div><ul><h3 style='font-size:1.2em;'>What's New</h3><li>added third level of crane speed</li><li>tower is centered after every drop in order to increase difficulty</li><li>increased successful drop rewards</li></ul></div>
+</div>
+
+<div id="loading-screen">loading...</div>
+
+<noscript><nojsel style="text-align:center;padding:20px;display:block;position:fixed;top:0px;left:0px;width:100%;height:100vh;z-index:5;background-color:#121212;color:white;font-size:1.5em;font-weight:bold;">You need to enable JavaScript <a target="_blank"href="https://www.enable-javascript.com/">(?)</a></nojsel></noscript>
+
+<script src="js/gameplay.js" type="text/javascript"></script>
+<script src="js/main.js" type="text/javascript"></script>
+
+
+</body></html>
+
+

@@ -1,0 +1,419 @@
+@font-face {
+  font-family: 'Bungee Spice';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/bungee_spice.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing:border-box;
+	font-family: 'Bungee Spice', cursive, monospace;
+	font-size:1.05em;
+  color:orange;
+}
+div, label, p, button{
+  color:orange;
+}
+
+html{
+	text-align: center;
+}
+body{
+	width:100%;
+	background-color:#121212;
+	color:#f0f0f0;
+	padding-top:50px;
+}
+
+#about li{
+  font-size:0.8em;
+}
+hr{
+  color:orange;
+  display:block;
+  margin:auto;
+  margin-top:17px;
+  margin-bottom:17px;
+  width:90%;
+  max-width:350px;
+}
+
+nav p{
+	font-size:2.6em;
+	font-weight:bold;
+	margin-bottom:20px;
+}
+
+nav button{
+	display:block;
+	margin:auto;
+	margin-bottom:25px;
+	color:orange;
+	width:95%;
+	max-width:200px;
+	cursor:pointer;
+	background-color:transparent;
+	font-weight:bold;
+	padding:12px;
+	border:solid;
+	border-width:2px 5px 5px 2px;
+	border-radius:2px;
+}
+nav button:hover{
+	background-color:#3f3f3f;
+}
+
+.content{
+	display: none;
+}
+.content p{
+	position: relative;
+}
+.content label{
+	font-size:2.5em;
+}
+.back-btn{
+	display:block;
+	margin: auto;
+	cursor:pointer;
+	height:50px;
+	width:50px;
+	border:none;
+	background-color:transparent;
+	background-image: url('../assets/back.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size:cover;
+}
+#leaderboard p label{
+	font-size: 1.5em;
+}
+
+#game-actions-btn{
+	display:block;
+	position:fixed;
+	top:10px;
+	right:10px;
+	cursor:pointer;
+	height:35px;
+	width:35px;
+	border:none;
+	background-color:transparent;
+	background-image: url('../assets/gear.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size:cover;
+}
+.actions-container{
+  display:none;
+	width:100%;
+	position:fixed;
+	top:50px;
+	left:0px;
+  z-index:3;
+}
+.actions-container p label{
+	background-color: black;
+	font-size:1em;
+	padding:2px;
+}
+.actions-container p{
+	margin-top: 10px;
+}
+
+#game-actions,#endgame-actions{
+	width:80%;
+	margin: auto;
+	margin-top:30px;
+	max-width:300px;
+	border:solid;
+	border-width:2px 5px 5px 2px;
+	border-radius:2px;
+	border-color:#a13000;
+	background-color: orange;
+}
+#game-actions button,#endgame-actions button{
+	display:block;
+	margin:auto;
+	margin-bottom:25px;
+	margin-top:25px;
+	color:#a13000;
+	width:95%;
+	max-width:200px;
+	cursor:pointer;
+	background-color:#121212;
+	font-weight:bold;
+	padding:12px;
+	border:solid;
+	border-width:2px 5px 5px 2px;
+	border-radius:2px;
+}
+#score-lbl{
+	text-shadow:-2px 2px black;
+	display:block;
+	position:fixed;
+	top:10px;
+	left:10px;
+	font-size:1em;
+}
+#score{
+	font-size:inherit;
+}
+.background-clouds{
+	transition: top 0.5s;
+	width:100%;
+	height:100vh;
+	z-index:-1;
+	position:fixed;
+	top:0px;
+	left:0px;
+	background-image: url('../assets/clouds.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size:cover;
+}
+#lives{
+	display:block;
+	position:fixed;
+	top:25px;
+	left:15px;
+}
+life{
+	display:inline-block;
+	width:20px;height:20px;
+	background-image: url('../assets/heart.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size:cover;
+}
+#endgame-actions input{
+  width:90%;
+  max-width:200px;
+  margin-top:15px;
+  padding:5px;
+  border:none;
+  border-radius:2px;
+  outline:none;
+  text-align: center;
+}
+
+#loading-screen{
+  display:none;
+  z-index: 10;
+  position:fixed;
+  top:0px;left:0px;
+  width:100%;
+  height:100vh;
+  background-color:rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding-top: 45%;
+}
+#click-input{
+  position:fixed;
+  bottom:0px;left:0px;
+  width:100%;
+  height:calc(100vh - 100px);
+  z-index:2;
+}
+.block, .entrance-block{
+  display:inline-block;
+	width:110px;height:110px;
+  position:fixed;
+	background-image: url('../assets/block.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size:cover;
+  left:calc(50% - 55px);
+}
+.entrance-block{
+  background-image: url('../assets/entrance.jpg');
+}
+
+#towline{
+  display:inline-block;
+  /*9x223*/
+	width:4px;height:120px;
+  position:fixed;
+  top:-1px;left:calc(50% - 2px);
+	background-image: url('../assets/towline.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size:cover;
+  transition: 1.5s linear;
+}
+#hook{
+  display:inline-block;
+	width:44px;height:44px;
+  position:fixed;
+  top:118px;left:calc(50% - 26px);
+	background-image: url('../assets/hook.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size:cover;
+}
+
+.swing{
+    -moz-animation: 1.5s ease 0s normal none infinite swing;
+    -moz-transform-origin: center top;
+    -webkit-animation:swing 1.5s infinite ease-in-out;
+    -webkit-transform-origin:top;
+}
+@-moz-keyframes swing{
+    0%{-moz-transform:rotate(-50deg)}
+    50%{-moz-transform:rotate(50deg)}
+    100%{-moz-transform:rotate(-50deg)}
+}
+@-webkit-keyframes swing{
+    0%{-webkit-transform:rotate(-50deg)}
+    50%{-webkit-transform:rotate(50deg)}
+    100%{-webkit-transform:rotate(-50deg)}
+}
+.swingfast{
+    -moz-animation: 1s ease 0s normal none infinite swingfast;
+    -moz-transform-origin: center top;
+    -webkit-animation:swingfast 1s infinite ease-in-out;
+    -webkit-transform-origin:top;
+}
+@-moz-keyframes swingfast{
+    0%{-moz-transform:rotate(-50deg)}
+    50%{-moz-transform:rotate(50deg)}
+    100%{-moz-transform:rotate(-50deg)}
+}
+@-webkit-keyframes swingfast{
+    0%{-webkit-transform:rotate(-50deg)}
+    50%{-webkit-transform:rotate(50deg)}
+    100%{-webkit-transform:rotate(-50deg)}
+}
+.swingfast2{
+    -moz-animation: 1s ease 0s normal none infinite swingfast2;
+    -moz-transform-origin: center top;
+    -webkit-animation:swingfast2 1s infinite ease-in-out;
+    -webkit-transform-origin:top;
+}
+@-moz-keyframes swingfast2{
+    0%{-moz-transform:rotate(-70deg)}
+    50%{-moz-transform:rotate(70deg)}
+    100%{-moz-transform:rotate(-70deg)}
+}
+@-webkit-keyframes swingfast2{
+    0%{-webkit-transform:rotate(-70deg)}
+    50%{-webkit-transform:rotate(70deg)}
+    100%{-webkit-transform:rotate(-70deg)}
+}
+
+.fallrotR{
+    -moz-animation: 0.5s ease 0s normal none infinite fallrotR;
+    -moz-transform-origin: center bottom;
+    -webkit-animation:fallrotR 0.5s infinite ease-in-out;
+    -webkit-transform-origin:bottom;
+}
+@-moz-keyframes fallrotR{
+    0%{-moz-transform:rotate(0deg)}
+    50%{-moz-transform:rotate(90deg)}
+    100%{-moz-transform:rotate(180deg)}
+}
+@-webkit-keyframes fallrotR{
+    0%{-webkit-transform:rotate(0deg)}
+    50%{-webkit-transform:rotate(90deg)}
+    100%{-webkit-transform:rotate(180deg)}
+}
+.fallrotL{
+    -moz-animation: 0.5s ease 0s normal none infinite fallrotL;
+    -moz-transform-origin: center bottom;
+    -webkit-animation:fallrotL 0.5s infinite ease-in-out;
+    -webkit-transform-origin:bottom;
+}
+@-moz-keyframes fallrotL{
+    0%{-moz-transform:rotate(0deg)}
+    50%{-moz-transform:rotate(-90deg)}
+    100%{-moz-transform:rotate(-180deg)}
+}
+@-webkit-keyframes fallrotL{
+    0%{-webkit-transform:rotate(0deg)}
+    50%{-webkit-transform:rotate(-90deg)}
+    100%{-webkit-transform:rotate(-180deg)}
+}
+
+.dropping{
+  transition: top 0.5s ease-in;
+}
+.keepfalling{
+  transition: top 2s ease-in;
+}
+.moving_down{
+  /*must be same as bg clouds transition*/
+  transition-property: top, left;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
+}
+
+#highscore-home{
+  font-size:1em;
+}
+#leaderboard div{
+  font-size:0.9em;
+}
+#leaderboard div{
+  height: 50vh;
+  width:90%;
+  max-width:300px;
+  margin:auto;
+}
+playertab{
+  font-size:inherit;
+  width:95%;
+  padding:7px;
+  border:solid orange;
+  border-width:0px 0px 2px 0px;
+  display:block;
+  margin-bottom:10px;
+  text-align:left;
+  border-radius:5px;
+  box-shadow: -2px 2px grey;
+}
+playertab label{
+  display:inline-block;
+  border-radius:3px;
+  padding:2px 5px;
+  margin-left: 10px;
+  background-color:#1c1b1a;
+  font-size:0.8em;
+}
+playertab .rank{
+  margin-right: 10px;
+  margin-left: 0px;
+}
+#scoresres{
+  display:block;
+  width:100%;
+  height:100%;
+  overflow-y:auto;
+  padding-bottom:50px;
+}
+gradient{
+  display:inline-block;
+  position:relative;
+  bottom:40px;
+  width:100%;
+  height:40px;
+  background: rgba(18,18,18);
+  background: linear-gradient(0deg, rgba(18,18,18,0.9) 22%, rgba(121,40,9,0.8) 64%);
+}
+
+@media only screen and (min-width: 768px){
+	/*css for desktop*/
+	.back-btn{
+		display:inline-block;
+		position: absolute;
+		top: 50%;
+		transform: translate(-70px, -50%);
+	}
+	#leaderboard p label{
+		font-size: 2em;
+	}
+}
